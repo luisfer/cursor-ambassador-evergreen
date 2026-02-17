@@ -1,0 +1,9 @@
+<svg width="640" height="320" viewBox="0 0 640 320" fill="none" xmlns="http://www.w3.org/2000/svg">
+<rect width="640" height="320" rx="36" fill="#FFF8EE"/>
+<circle cx="130" cy="160" r="72" fill="#2F6B5A"/>
+<path d="M98 183C98 162.013 115.013 145 136 145H166V183C166 203.987 148.987 221 128 221H98V183Z" fill="#D4F0E5"/>
+<rect x="216" y="108" width="340" height="22" rx="11" fill="#2F6B5A"/>
+<rect x="216" y="144" width="292" height="18" rx="9" fill="#4B8B77"/>
+<rect x="216" y="178" width="250" height="18" rx="9" fill="#4B8B77"/>
+<text x="216" y="238" fill="#2F6B5A" font-family="Arial, Helvetica, sans-serif" font-size="28" font-weight="700">Riverside Craft Cafe</text>
+</svg>

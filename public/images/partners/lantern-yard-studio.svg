@@ -1,0 +1,10 @@
+<svg width="640" height="320" viewBox="0 0 640 320" fill="none" xmlns="http://www.w3.org/2000/svg">
+<rect width="640" height="320" rx="36" fill="#F5F7FF"/>
+<rect x="84" y="86" width="110" height="148" rx="22" fill="#3D4DA6"/>
+<rect x="103" y="108" width="72" height="72" rx="36" fill="#D8DEFF"/>
+<rect x="117" y="122" width="44" height="44" rx="22" fill="#3D4DA6"/>
+<rect x="226" y="102" width="320" height="20" rx="10" fill="#3D4DA6"/>
+<rect x="226" y="138" width="274" height="16" rx="8" fill="#6578D8"/>
+<rect x="226" y="169" width="300" height="16" rx="8" fill="#6578D8"/>
+<text x="226" y="232" fill="#3D4DA6" font-family="Arial, Helvetica, sans-serif" font-size="28" font-weight="700">Lantern Yard Studio</text>
+</svg>

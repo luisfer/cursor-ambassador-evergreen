@@ -1,0 +1,10 @@
+<svg width="640" height="320" viewBox="0 0 640 320" fill="none" xmlns="http://www.w3.org/2000/svg">
+<rect width="640" height="320" rx="36" fill="#FDF6F0"/>
+<circle cx="138" cy="160" r="74" fill="#8A4F2D"/>
+<path d="M104 159C104 135.804 122.804 117 146 117V117C169.196 117 188 135.804 188 159V159C188 182.196 169.196 201 146 201V201C122.804 201 104 182.196 104 159V159Z" fill="#FFDCC1"/>
+<path d="M146 130C159.255 130 170 140.745 170 154C170 167.255 159.255 178 146 178C132.745 178 122 167.255 122 154C122 140.745 132.745 130 146 130Z" fill="#8A4F2D"/>
+<rect x="226" y="104" width="330" height="21" rx="10.5" fill="#8A4F2D"/>
+<rect x="226" y="141" width="266" height="16" rx="8" fill="#B66B3E"/>
+<rect x="226" y="171" width="295" height="16" rx="8" fill="#B66B3E"/>
+<text x="226" y="234" fill="#8A4F2D" font-family="Arial, Helvetica, sans-serif" font-size="28" font-weight="700">Atlas Roastery</text>
+</svg>
