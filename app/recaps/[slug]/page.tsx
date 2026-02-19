@@ -6,13 +6,12 @@ import { recapsBySlug } from '@/content/recaps'
 import { siteConfig } from '@/content/site.config'
 
 interface RecapPageProps {
-  params: {
-    slug: string
-  }
+  params: Promise<{ slug: string }>
 }
 
-export function generateMetadata({ params }: RecapPageProps): Metadata {
-  const recap = recapsBySlug[params.slug]
+export async function generateMetadata({ params }: RecapPageProps): Promise<Metadata> {
+  const { slug } = await params
+  const recap = recapsBySlug[slug]
   if (!recap) return {}
 
   const description = recap.summary[0] || `Recap of ${recap.title}`
@@ -62,13 +61,14 @@ function buildRecapJsonLd(slug: string) {
   }
 }
 
-export default function RecapPage({ params }: RecapPageProps) {
-  const recap = recapsBySlug[params.slug]
+export default async function RecapPage({ params }: RecapPageProps) {
+  const { slug } = await params
+  const recap = recapsBySlug[slug]
   if (!recap) {
     notFound()
   }
 
-  const jsonLd = buildRecapJsonLd(params.slug)
+  const jsonLd = buildRecapJsonLd(slug)
 
   return (
     <main className="min-h-screen bg-cursor-bg text-cursor-text">

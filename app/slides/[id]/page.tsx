@@ -4,13 +4,12 @@ import SlideContent from '@/modules/slides/components/SlideContent'
 import { exampleDeck, totalExampleSlides } from '@/modules/slides/content/example-deck'
 
 interface SlidePageProps {
-  params: {
-    id: string
-  }
+  params: Promise<{ id: string }>
 }
 
-export default function SlidePage({ params }: SlidePageProps) {
-  const id = Number(params.id)
+export default async function SlidePage({ params }: SlidePageProps) {
+  const { id: idParam } = await params
+  const id = Number(idParam)
   if (!Number.isInteger(id) || id < 1 || id > totalExampleSlides) {
     notFound()
   }
