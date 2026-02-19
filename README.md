@@ -196,6 +196,8 @@ See `CONTRIBUTING.md`.
 ## Sites Using This Template
 
 - [cursorthailand.com](https://cursorthailand.com)
+- [cursorserbia.com](https://cursorserbia.com)
+- [cursor-croatia.com](https://cursor-croatia.com)
 
 Using this template? Open a PR to add your site here.
 
