@@ -9,9 +9,9 @@ import { ambassadors } from '@/content/ambassadors';
 import { siteConfig } from '@/content/site.config';
 import { useI18n } from '@/lib/i18n';
 
-interface BrandIconProps {
+type BrandIconProps = {
 	iconPath: string;
-}
+};
 
 const BrandIcon: React.FC<BrandIconProps> = ({ iconPath }) => {
 	return (
@@ -21,9 +21,9 @@ const BrandIcon: React.FC<BrandIconProps> = ({ iconPath }) => {
 	);
 };
 
-interface SocialIconProps {
+type SocialIconProps = {
 	kind: 'x' | 'linkedin' | 'github' | 'website';
-}
+};
 
 const SocialIcon: React.FC<SocialIconProps> = ({ kind }) => {
 	if (kind === 'x') return <BrandIcon iconPath={siX.path} />;

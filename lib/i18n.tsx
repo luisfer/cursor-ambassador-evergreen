@@ -20,9 +20,9 @@ interface I18nContextType {
 
 const I18nContext = createContext<I18nContextType | undefined>(undefined);
 
-interface I18nProviderProps {
+type I18nProviderProps = {
 	children: ReactNode;
-}
+};
 
 export const I18nProvider: React.FC<I18nProviderProps> = ({ children }) => {
 	const [locale, setLocaleState] = useState<string>(siteConfig.defaultLocale);

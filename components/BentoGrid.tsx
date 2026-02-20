@@ -4,14 +4,14 @@ import React from 'react';
 import Image from 'next/image';
 import { HeaderPhoto } from '@/lib/types';
 
-interface BentoGridProps {
+type BentoGridProps = {
 	photos: HeaderPhoto[];
 	cols?: number;
 	rows?: number;
 	mobileCols?: number;
 	mobileRows?: number;
 	gapClassName?: string;
-}
+};
 
 function toGridPlacement(start: number, span?: number) {
 	return `${start} / span ${span ?? 1}`;
