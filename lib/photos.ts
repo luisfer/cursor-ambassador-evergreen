@@ -1,5 +1,5 @@
-import { worldEventPhotos } from '@/content/world-events'
+import { worldEventPhotos } from '@/content/world-events';
 
 export function getPhotos() {
-  return worldEventPhotos
+	return worldEventPhotos;
 }

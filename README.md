@@ -129,13 +129,13 @@ Language toggle appears when `siteConfig.locales.length > 1`.
 Example `content/locales/index.ts`:
 
 ```ts
-import en from './en.json'
-import th from './th.json'
+import en from './en.json';
+import th from './th.json';
 
 export const localeBundles = {
-  en,
-  th,
-} as const
+	en,
+	th,
+} as const;
 ```
 
 ### Translation keys and params

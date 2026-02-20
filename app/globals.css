@@ -1,91 +1,128 @@
 @import url('https://fonts.googleapis.com/css2?family=Thasadith:wght@400;700&display=swap');
+@import 'tailwindcss';
 
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
-
-@font-face {
-  font-family: 'BSRU Pro';
-  src: url('/fonts/BSRU Pro Regular.woff') format('woff');
-  font-weight: normal;
-  font-style: normal;
-  font-display: swap;
-}
+@source "../components";
+@source "../modules";
 
 @font-face {
-  font-family: 'CursorGothic';
-  src: url('/fonts/CursorGothic-Regular.woff2') format('woff2');
-  font-weight: 400;
-  font-style: normal;
-  font-display: swap;
+	font-family: 'BSRU Pro';
+	src: url('/fonts/BSRU Pro Regular.woff') format('woff');
+	font-weight: normal;
+	font-style: normal;
+	font-display: swap;
 }
 
 @font-face {
-  font-family: 'CursorGothic';
-  src: url('/fonts/CursorGothic-Italic.woff2') format('woff2');
-  font-weight: 400;
-  font-style: italic;
-  font-display: swap;
+	font-family: 'CursorGothic';
+	src: url('/fonts/CursorGothic-Regular.woff2') format('woff2');
+	font-weight: 400;
+	font-style: normal;
+	font-display: swap;
 }
 
 @font-face {
-  font-family: 'CursorGothic';
-  src: url('/fonts/CursorGothic-Bold.woff2') format('woff2');
-  font-weight: 700;
-  font-style: normal;
-  font-display: swap;
+	font-family: 'CursorGothic';
+	src: url('/fonts/CursorGothic-Italic.woff2') format('woff2');
+	font-weight: 400;
+	font-style: italic;
+	font-display: swap;
 }
 
 @font-face {
-  font-family: 'CursorGothic';
-  src: url('/fonts/CursorGothic-BoldItalic.woff2') format('woff2');
-  font-weight: 700;
-  font-style: italic;
-  font-display: swap;
+	font-family: 'CursorGothic';
+	src: url('/fonts/CursorGothic-Bold.woff2') format('woff2');
+	font-weight: 700;
+	font-style: normal;
+	font-display: swap;
 }
 
-:root {
-  --font-sans: 'CursorGothic', system-ui, sans-serif;
-  --font-mono: 'Berkeley Mono', ui-monospace, SFMono-Regular, Menlo, monospace;
-  --font-cursor: 'CursorGothic', system-ui, sans-serif;
-  --font-bsru: 'BSRU Pro', sans-serif;
-  --font-thai: 'Thasadith', sans-serif;
+@font-face {
+	font-family: 'CursorGothic';
+	src: url('/fonts/CursorGothic-BoldItalic.woff2') format('woff2');
+	font-weight: 700;
+	font-style: italic;
+	font-display: swap;
 }
 
-* {
-  box-sizing: border-box;
-  padding: 0;
-  margin: 0;
+@theme {
+	--color-cursor-bg: #14120b;
+	--color-cursor-bg-dark: #0f0d06;
+	--color-cursor-surface: #1c1a12;
+	--color-cursor-surface-raised: #262318;
+	--color-cursor-text: #edecec;
+	--color-cursor-text-secondary: rgba(237, 236, 236, 0.75);
+	--color-cursor-text-muted: rgba(237, 236, 236, 0.55);
+	--color-cursor-text-faint: rgba(237, 236, 236, 0.35);
+	--color-cursor-border: rgba(237, 236, 236, 0.08);
+	--color-cursor-border-emphasis: rgba(237, 236, 236, 0.15);
+	--color-cursor-overlay: rgba(237, 236, 236, 0.05);
+	--color-cursor-accent-blue: #a8b4c8;
+	--color-cursor-accent-green: #a8c4a0;
+	--color-cursor-accent-red: #c4a0a0;
+	--color-cursor-accent-purple: #b8a8c8;
+	--color-cursor-accent-yellow: #c8bfa0;
+	--color-cursor-accent-orange: #c8b4a0;
+	--color-cursor-accent-blue-bg: rgba(26, 29, 46, 0.3);
+	--color-cursor-accent-green-bg: rgba(26, 36, 24, 0.3);
+	--color-cursor-accent-red-bg: rgba(42, 26, 24, 0.3);
+	--color-cursor-accent-purple-bg: rgba(34, 26, 46, 0.3);
+	--color-cursor-accent-yellow-bg: rgba(42, 36, 24, 0.3);
+	--color-cursor-accent-orange-bg: rgba(42, 32, 24, 0.3);
+
+	--font-sans: 'CursorGothic', system-ui, sans-serif;
+	--font-mono: 'Berkeley Mono', ui-monospace, SFMono-Regular, Menlo, monospace;
+	--font-cursor: 'CursorGothic', system-ui, sans-serif;
+	--font-bsru: 'BSRU Pro', sans-serif;
+	--font-thai: 'Thasadith', sans-serif;
+
+	--animate-fade-in: fade-in 0.5s ease-out forwards;
+	--animate-slide-up: slide-up 0.5s ease-out forwards;
+
+	@keyframes fade-in {
+		0% {
+			opacity: 0;
+		}
+		100% {
+			opacity: 1;
+		}
+	}
+
+	@keyframes slide-up {
+		0% {
+			opacity: 0;
+			transform: translateY(20px);
+		}
+		100% {
+			opacity: 1;
+			transform: translateY(0);
+		}
+	}
 }
 
-html,
-body {
-  max-width: 100vw;
-  overflow-x: hidden;
-  background: #14120b;
-  color: #edecec;
+@layer base {
+	html,
+	body {
+		max-width: 100vw;
+		overflow-x: hidden;
+		background: #14120b;
+		color: #edecec;
+	}
+
+	body {
+		font-family: var(--font-sans);
+		-webkit-font-smoothing: antialiased;
+		-moz-osx-font-smoothing: grayscale;
+	}
 }
 
-body {
-  font-family: var(--font-sans);
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+@utility font-cursor {
+	font-family: var(--font-cursor);
 }
 
-@layer utilities {
-  .font-mono {
-    font-family: var(--font-mono);
-  }
+@utility font-bsru {
+	font-family: var(--font-bsru);
+}
 
-  .font-cursor {
-    font-family: var(--font-cursor);
-  }
-
-  .font-bsru {
-    font-family: var(--font-bsru);
-  }
-
-  .font-thai {
-    font-family: var(--font-thai);
-  }
+@utility font-thai {
+	font-family: var(--font-thai);
 }

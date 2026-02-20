@@ -1,60 +1,60 @@
 {
-  "home": {
-    "featured": "Featured",
-    "upcomingEvents": "Upcoming Events",
-    "register": "Register",
-    "pastEvents": "Past Events",
-    "attendees": "{count} attendees",
-    "hostedBy": "Hosted by",
-    "viewRecap": "View recap",
-    "viewSlides": "View slides"
-  },
-  "ambassadors": {
-    "title": "Cursor {communityName} ambassadors"
-  },
-  "footer": {
-    "hostingPartners": "Hosting Partners",
-    "community": "Cursor Community",
-    "allEvents": "All events on Luma",
-    "madeWith": "Made with Cursor by ambassadors worldwide"
-  },
-  "featured": {
-    "defaultDescription": "A practical, hands-on workshop series for builders who want to learn Cursor with real workflows."
-  },
-  "recap": {
-    "title": "Event recap",
-    "galleryTitle": "Photos",
-    "gallerySubtitle": "{count} photos from the event",
-    "openPhoto": "Open photo {index}",
-    "closeGallery": "Close gallery",
-    "prevPhoto": "Previous photo",
-    "nextPhoto": "Next photo",
-    "photoLabel": "Photo {index} of {total}"
-  },
-  "photos": {
-    "title": "A note on photos",
-    "description": "We'll be taking photos and videos during the event for social media and future Cursor Community content.",
-    "preference": "If you'd prefer not to be photographed:",
-    "option1": "Let the host know when you arrive",
-    "option2": "We'll make sure to respect your preference",
-    "thanks": "Thanks for understanding."
-  },
-  "matchmaking": {
-    "title": "Want to meet new people?",
-    "howItWorks": "How it works",
-    "step1": "Come to the host table and grab a {numberCard} (1-10)",
-    "step2": "Find others with the {sameNumber}",
-    "step3": "Sit together and co-work",
-    "iceBreakers": "Ice breakers",
-    "question1": "\"Have you used Cursor before?\"",
-    "question2": "\"Are you building something cool with Cursor?\"",
-    "question3": "\"What's your favorite Cursor feature?\"",
-    "numberCard": "random number card",
-    "sameNumber": "the same number"
-  },
-  "worldEvents": {
-    "title": "Cafe Cursor around the world",
-    "subtitle": "Same day, different timezones",
-    "description": "Cursor users are building together worldwide. Even with timezone differences, we are one community."
-  }
+	"home": {
+		"featured": "Featured",
+		"upcomingEvents": "Upcoming Events",
+		"register": "Register",
+		"pastEvents": "Past Events",
+		"attendees": "{count} attendees",
+		"hostedBy": "Hosted by",
+		"viewRecap": "View recap",
+		"viewSlides": "View slides"
+	},
+	"ambassadors": {
+		"title": "Cursor {communityName} ambassadors"
+	},
+	"footer": {
+		"hostingPartners": "Hosting Partners",
+		"community": "Cursor Community",
+		"allEvents": "All events on Luma",
+		"madeWith": "Made with Cursor by ambassadors worldwide"
+	},
+	"featured": {
+		"defaultDescription": "A practical, hands-on workshop series for builders who want to learn Cursor with real workflows."
+	},
+	"recap": {
+		"title": "Event recap",
+		"galleryTitle": "Photos",
+		"gallerySubtitle": "{count} photos from the event",
+		"openPhoto": "Open photo {index}",
+		"closeGallery": "Close gallery",
+		"prevPhoto": "Previous photo",
+		"nextPhoto": "Next photo",
+		"photoLabel": "Photo {index} of {total}"
+	},
+	"photos": {
+		"title": "A note on photos",
+		"description": "We'll be taking photos and videos during the event for social media and future Cursor Community content.",
+		"preference": "If you'd prefer not to be photographed:",
+		"option1": "Let the host know when you arrive",
+		"option2": "We'll make sure to respect your preference",
+		"thanks": "Thanks for understanding."
+	},
+	"matchmaking": {
+		"title": "Want to meet new people?",
+		"howItWorks": "How it works",
+		"step1": "Come to the host table and grab a {numberCard} (1-10)",
+		"step2": "Find others with the {sameNumber}",
+		"step3": "Sit together and co-work",
+		"iceBreakers": "Ice breakers",
+		"question1": "\"Have you used Cursor before?\"",
+		"question2": "\"Are you building something cool with Cursor?\"",
+		"question3": "\"What's your favorite Cursor feature?\"",
+		"numberCard": "random number card",
+		"sameNumber": "the same number"
+	},
+	"worldEvents": {
+		"title": "Cafe Cursor around the world",
+		"subtitle": "Same day, different timezones",
+		"description": "Cursor users are building together worldwide. Even with timezone differences, we are one community."
+	}
 }

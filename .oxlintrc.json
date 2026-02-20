@@ -1,0 +1,8 @@
+{
+	"$schema": "./node_modules/oxlint/configuration_schema.json",
+	"plugins": ["nextjs", "react", "typescript", "react-perf"],
+	"categories": {
+		"correctness": "warn"
+	},
+	"ignorePatterns": [".next/**", "out/**", "build/**", "node_modules/**"]
+}
