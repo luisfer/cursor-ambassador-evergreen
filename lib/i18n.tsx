@@ -1,80 +1,79 @@
-'use client'
+'use client';
 
-import { createContext, useContext, useEffect, useState, ReactNode } from 'react'
-import { siteConfig } from '@/content/site.config'
-import { localeBundles } from '@/content/locales'
+import React, { createContext, useContext, useEffect, useState, ReactNode } from 'react';
+import { siteConfig } from '@/content/site.config';
+import { localeBundles } from '@/content/locales';
 
 interface TranslationTree {
-  [key: string]: string | TranslationTree
+	[key: string]: string | TranslationTree;
 }
 
-const translationBundles: Record<string, TranslationTree> = {
-  ...Object.fromEntries(
-    Object.entries(localeBundles).map(([locale, bundle]) => [locale, bundle as TranslationTree])
-  ),
-}
+const TRANSLATION_BUNDLES_BY_LOCALE: Record<string, TranslationTree> = {
+	...Object.fromEntries(Object.entries(localeBundles).map(([locale, bundle]) => [locale, bundle as TranslationTree])),
+};
 
 interface I18nContextType {
-  locale: string
-  setLocale: (locale: string) => void
-  t: (key: string, params?: Record<string, string>) => string
+	locale: string;
+	setLocale: (locale: string) => void;
+	t: (key: string, params?: Record<string, string>) => string;
 }
 
-const I18nContext = createContext<I18nContextType | undefined>(undefined)
+const I18nContext = createContext<I18nContextType | undefined>(undefined);
 
-export function I18nProvider({ children }: { children: ReactNode }) {
-  const [locale, setLocaleState] = useState<string>(siteConfig.defaultLocale)
+type I18nProviderProps = {
+	children: ReactNode;
+};
 
-  useEffect(() => {
-    const savedLocale = localStorage.getItem('locale')
-    if (savedLocale && siteConfig.locales.includes(savedLocale)) {
-      setLocaleState(savedLocale)
-    }
-  }, [])
+export const I18nProvider: React.FC<I18nProviderProps> = ({ children }) => {
+	const [locale, setLocaleState] = useState<string>(siteConfig.defaultLocale);
 
-  const setLocale = (nextLocale: string) => {
-    if (!siteConfig.locales.includes(nextLocale)) {
-      return
-    }
-    setLocaleState(nextLocale)
-    localStorage.setItem('locale', nextLocale)
-  }
+	useEffect(() => {
+		const savedLocale = localStorage.getItem('locale');
+		if (savedLocale && siteConfig.locales.includes(savedLocale)) {
+			setLocaleState(savedLocale);
+		}
+	}, []);
 
-  const t = (key: string, params?: Record<string, string>): string => {
-    const keys = key.split('.')
-    const activeTranslations = translationBundles[locale] ?? translationBundles.en
+	const setLocale = (nextLocale: string) => {
+		if (!siteConfig.locales.includes(nextLocale)) {
+			return;
+		}
+		setLocaleState(nextLocale);
+		localStorage.setItem('locale', nextLocale);
+	};
 
-    let value: string | TranslationTree | undefined = activeTranslations
-    for (const k of keys) {
-      if (typeof value !== 'object' || value === null) {
-        value = undefined
-        break
-      }
-      value = value[k]
-    }
+	const t = (key: string, params?: Record<string, string>): string => {
+		const keys = key.split('.');
+		const activeTranslations = TRANSLATION_BUNDLES_BY_LOCALE[locale] ?? TRANSLATION_BUNDLES_BY_LOCALE.en;
 
-    if (typeof value !== 'string') {
-      return key
-    }
+		let value: string | TranslationTree | undefined = activeTranslations;
+		for (const k of keys) {
+			if (typeof value !== 'object' || value === null) {
+				value = undefined;
+				break;
+			}
+			value = value[k];
+		}
 
-    if (!params) {
-      return value
-    }
+		if (typeof value !== 'string') {
+			return key;
+		}
 
-    return value.replace(/\{(\w+)\}/g, (match, paramKey) => params[paramKey] ?? match)
-  }
+		if (!params) {
+			return value;
+		}
 
-  return (
-    <I18nContext.Provider value={{ locale, setLocale, t }}>
-      {children}
-    </I18nContext.Provider>
-  )
-}
+		return value.replace(/\{(\w+)\}/g, (match, paramKey) => params[paramKey] ?? match);
+	};
+
+	return <I18nContext.Provider value={{ locale, setLocale, t }}>{children}</I18nContext.Provider>;
+};
 
 export function useI18n() {
-  const context = useContext(I18nContext)
-  if (!context) {
-    throw new Error('useI18n must be used within I18nProvider')
-  }
-  return context
+	const context = useContext(I18nContext);
+	if (!context) {
+		throw new Error('useI18n must be used within I18nProvider');
+	}
+
+	return context;
 }
