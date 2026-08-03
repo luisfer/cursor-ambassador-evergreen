@@ -259,6 +259,7 @@ See `CONTRIBUTING.md`.
 | -------------------- | ---------------------------------------------------------- | ------------------------------------------------------- |
 | Austria              | [cursoraustria.com](https://cursoraustria.com)             | —                                                       |
 | Belgium              | [cursorbelgium.com](https://cursorbelgium.com)             | [Kris](https://github.com/krismatterz) (`@krismatterz`) |
+| Brazil               | [cursorbrasil.com.br](https://cursorbrasil.com.br)         | -  |
 | Bulgaria             | [cursorbulgaria.com](https://cursorbulgaria.com)           | [Kristiyan Velkov](https://github.com/kristiyan-velkov) |
 | Canada (Calgary)     | [cursorcalgary.com](https://cursorcalgary.com)             | —                                                       |
 | Croatia              | [cursorcroatia.com](https://cursorcroatia.com)             | [Nico](https://github.com/nitodeco)                     |
@@ -266,8 +267,9 @@ See `CONTRIBUTING.md`.
 | Germany              | [cursorgermany.com](https://cursorgermany.com)             | [Maurice](https://github.com/mpdesigncode27)            |
 | Indonesia            | [cursorindonesia.com](https://cursorindonesia.com)         | —                                                       |
 | Italy (Trento)       | [trento.cursor-italy.com](https://trento.cursor-italy.com) | [Davide Carlomagno](https://github.com/dvdcarlomagno)   |
+| Mexico (Guadalajara)       | [cursorguadalajara.com](https://www.cursorguadalajara.com/) | -   |
 | Netherlands          | [cursornetherlands.com](https://cursornetherlands.com)     | Rogier Muller, Thijs Sondag                             |
-| New Zealand          | [cursornewzealand.com](https://cursornewzealand.com)       | —                                                       |
+| New Zealand          | [cursornewzealand.co.nz/](https://cursornewzealand.co.nz) | —                                                |
 | Romania              | [cursorromania.com](https://cursorromania.com)             | [Sergei Chyrkov](https://github.com/chyrkov)            |
 | Serbia               | [cursorserbia.com](https://cursorserbia.com)               | [Aleksandar Hadzibabic](https://github.com/hadzija7)    |
 | South Africa         | [cursorsouthafrica.com](https://cursorsouthafrica.com)     | [@TKala82](https://github.com/TKala82)                  |
