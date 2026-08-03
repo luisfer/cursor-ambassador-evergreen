@@ -2,7 +2,24 @@
 
 ![Cursor Ambassador Banner](public/images/readme-banner.jpg)
 
-This repository is a configurable Next.js template for Cursor Ambassador community sites.
+Configurable Next.js template for Cursor Ambassador community sites. Created by [Luis Fernando Romero Calero](https://lfrc.me) ([@luisfer](https://github.com/luisfer)), adapted from [Cursor Thailand](https://cursorthailand.com).
+
+This is a community-maintained template, not an official Cursor product.
+
+## Attribution (required)
+
+Country sites based on this template must show a visible footer credit. The default footer already includes:
+
+> Based on [Cursor Ambassador Evergreen](https://github.com/luisfer/cursor-ambassador-evergreen) by [Luis Romero](https://lfrc.me)
+
+Do not remove that line without replacing it with an equivalent visible credit. Details: [`NOTICE`](NOTICE) and [`ATTRIBUTION.md`](ATTRIBUTION.md).
+
+### What “clamped upstream” means
+
+- The default footer credit stays in the template.
+- PRs that strip attribution without an equivalent credit are declined.
+- Sample event photography is not redistributed as free stock — hero slots ship as empty placeholders.
+- Code remains MIT; deployment credit and media rules live in `NOTICE`.
 
 ## Quick Start
 
@@ -13,6 +30,8 @@ pnpm dev
 ```
 
 Open `http://localhost:3000`.
+
+Before launching a country site, walk through the checklist in [`ATTRIBUTION.md`](ATTRIBUTION.md).
 
 ## Project Structure
 
@@ -35,6 +54,8 @@ Open `http://localhost:3000`.
 - `components/PastEvents.tsx`: editorial recap index.
 - `components/LumaCalendar.tsx`: optional embedded Luma calendar section.
 - `components/AmbassadorSection.tsx`: ambassador cards.
+- `components/CommunityQuotes.tsx`: optional short quote grid (gated in site config).
+- `components/ClosingCTA.tsx`: “Come build with us” band with Turner wallpaper.
 - `components/Partners.tsx`: hosting partner cards/logos.
 - `components/GlobalEvents.tsx`: world events section wrapper.
 - `components/WorldEventsCarousel.tsx`: carousel inside GlobalEvents.
@@ -52,6 +73,7 @@ This template is content-first. Most customization is done by editing files in `
 - `content/partners.ts`: host/sponsor logos and URLs.
 - `content/world-events.ts`: world carousel entries.
 - `content/community-tweets.ts`: curated tweet status URLs for the optional mosaic.
+- `content/community-quotes.ts`: short attendee/ambassador quotes for the optional quotes section.
 - `content/recaps/*.ts`: recap documents rendered by slug.
 - `content/locales/*.json`: translation dictionaries.
 - `content/locales/index.ts`: locale bundle registry consumed by `lib/i18n.tsx`.
@@ -68,7 +90,7 @@ Edit `content/site.config.ts`:
 - `footerTagline`
 - `description` — short Open Graph / Twitter / `<meta>` description (keep it concrete; avoid marketing fluff)
 - `ogImage` — path under `public/` for a 1200×630 share image (template ships `public/og.jpg`; replace with a chapter photo)
-- `sections`: toggle optional blocks (`matchmaking`, `photoDisclaimer`, `lumaCalendar`, `communityTweets`)
+- `sections`: toggle optional blocks (`matchmaking`, `photoDisclaimer`, `lumaCalendar`, `communityTweets`, `communityQuotes`)
 
 Set `NEXT_PUBLIC_SITE_URL` in `.env.local` for sitemap, canonical URLs, and Open Graph (`metadataBase`). Without it, previews fall back to `http://localhost:3000`.
 
@@ -182,8 +204,9 @@ Optional sections are gated in `siteConfig.sections`:
 - `photoDisclaimer`: photo consent notice
 - `lumaCalendar`: embedded Luma calendar (also requires `lumaCalendarEmbedUrl`)
 - `communityTweets`: curated X/Twitter mosaic (also edit `content/community-tweets.ts`)
+- `communityQuotes`: short quote grid (also edit `content/community-quotes.ts`; replace samples before enabling)
 
-Remove an always-on section by deleting its component from `app/page.tsx`.
+The closing CTA (“Come build with us”) and footer always render. Remove an always-on section by deleting its component from `app/page.tsx` — keep the footer template credit.
 
 ## Scripts
 
@@ -203,6 +226,10 @@ See [`CHANGELOG.md`](CHANGELOG.md) for version history (current: **0.3.1**).
 ## Image Strategy
 
 This template uses local images in `public/images/` for hero photos, world events, ambassadors, and partner logos.
+
+Hero and world-event slots ship as **empty placeholders** (`public/images/events/placeholder-*.jpg`). Replace them with your own chapter photos before launch (≥7 for the bento). Do not reuse Athita’s photography or other named Cursor Thailand event photos without permission and credit.
+
+The closing CTA uses J. M. W. Turner, _Norham Castle, Sunrise_ (c. 1845) from Wikimedia — public domain; credited in the image `alt` text.
 
 With fully local images, `next.config.js` does not need remote image domains for hero photos. If you enable community tweets, `pbs.twimg.com` and `abs.twimg.com` are already allowlisted for tweet avatars and media.
 
@@ -240,6 +267,7 @@ See `CONTRIBUTING.md`.
 | Indonesia            | [cursorindonesia.com](https://cursorindonesia.com)         | —                                                       |
 | Italy (Trento)       | [trento.cursor-italy.com](https://trento.cursor-italy.com) | [Davide Carlomagno](https://github.com/dvdcarlomagno)   |
 | Netherlands          | [cursornetherlands.com](https://cursornetherlands.com)     | Rogier Muller, Thijs Sondag                             |
+| New Zealand          | [cursornewzealand.com](https://cursornewzealand.com)       | —                                                       |
 | Romania              | [cursorromania.com](https://cursorromania.com)             | [Sergei Chyrkov](https://github.com/chyrkov)            |
 | Serbia               | [cursorserbia.com](https://cursorserbia.com)               | [Aleksandar Hadzibabic](https://github.com/hadzija7)    |
 | South Africa         | [cursorsouthafrica.com](https://cursorsouthafrica.com)     | [@TKala82](https://github.com/TKala82)                  |
@@ -254,7 +282,7 @@ Using this template? Open a PR to add your site here.
 
 ## Credits
 
-**Created by** [Luis Fernando Romero Calero](https://lfrc.me) ([@luisfer](https://github.com/luisfer)) — design and implementation of this template, adapted from [Cursor](https://cursor.com) community branding.
+**Created by** [Luis Fernando Romero Calero](https://lfrc.me) ([@luisfer](https://github.com/luisfer)) — design and implementation of this template, adapted from [Cursor Thailand](https://cursorthailand.com) and [Cursor](https://cursor.com) community branding.
 
 **Contributors**
 
@@ -264,4 +292,4 @@ Using this template? Open a PR to add your site here.
 
 ## License
 
-MIT. See `LICENSE`.
+MIT for code — see [`LICENSE`](LICENSE). Deployment credit and media rules — see [`NOTICE`](NOTICE) and [`ATTRIBUTION.md`](ATTRIBUTION.md).

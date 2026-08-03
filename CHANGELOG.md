@@ -14,6 +14,9 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
 - Optional host venue logo chip on past-event / recap index cards (`event.host`)
 - Date-grouped upcoming event index
 - Site SEO fields on `siteConfig` (`description`, `ogImage`) plus default `public/og.jpg` (1200×630) for Open Graph / Twitter cards
+- `NOTICE`, `ATTRIBUTION.md`, and `AGENTS.md` for deployment credit and media rules
+- Closing CTA (“Come build with us”) with Turner _Norham Castle, Sunrise_ (Wikimedia / public domain)
+- Optional community quotes section (`sections.communityQuotes`, `content/community-quotes.ts`)
 
 ### Changed
 
@@ -25,9 +28,14 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
 - External text links use `↗`; internal links use `→`
 - Landing recap cards use a larger photo column; host logo sits in the text column (not over photos)
 - Root metadata uses `summary_large_image`, `metadataBase` from `NEXT_PUBLIC_SITE_URL`, and chapter `description` / `ogImage`
+- Clarified ownership: MIT for code (copyright Luis Fernando Romero Calero); deployment credit and media rules in `NOTICE`
+- Default footer includes required template attribution
+- Sample event photography removed from the template seed; hero/world slots use empty placeholders
 
 ### Notes for consumers
 
+- **Attribution:** keep the footer template credit (or an equivalent visible line). See `ATTRIBUTION.md`.
+- **Photos:** replace `public/images/events/placeholder-*.jpg` with your chapter photos. Do not reuse Athita / Thailand event photos without credit and permission.
 - **Hero:** the gradient overlay + eyebrow / description / Luma Join CTA are gone. Copy lives in an opaque panel. Keep Join in the nav (default) or re-add a CTA in `components/HeroHeader.tsx`.
 - **Bento contract:** the panel assumes the first slot in `content/bento-slots.ts` stays top-left `2×2` on desktop and mobile. If you change that geometry, update the panel grid in `HeroHeader.tsx` to match.
 - **`content/events.ts`:** sample `host` may conflict on merge — keep your events; optionally add `host: { name, logo }` for the venue chip.

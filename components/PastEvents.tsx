@@ -25,11 +25,7 @@ const PastEvents: React.FC = () => {
 
 					return (
 						<Link key={event.id} href={event.recapPath} className={`${cardInteractive} group block`}>
-							<article
-								className={
-									event.thumbnail ? 'grid md:grid-cols-[minmax(0,1.35fr)_minmax(280px,0.9fr)]' : ''
-								}
-							>
+							<article className={event.thumbnail ? 'grid md:grid-cols-[minmax(0,1.35fr)_minmax(280px,0.9fr)]' : ''}>
 								{event.thumbnail ? (
 									<div className="relative aspect-[16/10] overflow-hidden md:aspect-auto md:min-h-[280px]">
 										<Image
@@ -46,13 +42,9 @@ const PastEvents: React.FC = () => {
 										<div className="min-w-0">
 											<p className="text-sm text-cursor-text-muted">
 												{event.displayDate}
-												{event.attendees
-													? ` · ${t('home.attendees', { count: String(event.attendees) })}`
-													: ''}
+												{event.attendees ? ` · ${t('home.attendees', { count: String(event.attendees) })}` : ''}
 											</p>
-											<h3 className="mt-2 text-2xl font-normal tracking-tight text-cursor-text">
-												{event.title}
-											</h3>
+											<h3 className="mt-2 text-2xl font-normal tracking-tight text-cursor-text">{event.title}</h3>
 											<p className="mt-2 text-sm text-cursor-text-muted">
 												{event.host ? `${event.host.name} · ` : ''}
 												{event.location}

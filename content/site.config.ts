@@ -1,4 +1,5 @@
 // REPLACE: Update these values for your local Cursor community.
+// Keep the required footer template credit in components/Footer.tsx (see NOTICE / ATTRIBUTION.md).
 export const siteConfig = {
 	communityName: 'Cursor Community',
 	communityNameLocal: 'YourCity',
@@ -20,6 +21,8 @@ export const siteConfig = {
 		photoDisclaimer: false,
 		lumaCalendar: false,
 		communityTweets: false,
+		/** Set true after replacing sample quotes in content/community-quotes.ts */
+		communityQuotes: false,
 	},
 };
 

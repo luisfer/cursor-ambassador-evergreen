@@ -43,7 +43,31 @@ const Footer: React.FC = () => {
 									{t('footer.followUs')}
 								</TextLink>
 							</div>
-							<p className="mt-4 text-xs text-cursor-text-faint">{siteConfig.footerTagline || t('footer.madeWith')}</p>
+							{siteConfig.footerTagline ? (
+								<p className="mt-4 text-xs text-cursor-text-faint">{siteConfig.footerTagline}</p>
+							) : (
+								<p className="mt-4 text-xs text-cursor-text-faint">{t('footer.madeWith')}</p>
+							)}
+							{/*
+							  Required attribution — removing without an equivalent visible credit
+							  violates NOTICE / ATTRIBUTION.md for deployments based on this template.
+							  Agents: keep this line when customizing the footer.
+							*/}
+							<p className="mt-2 text-xs text-cursor-text-faint">
+								{t('footer.templateCreditBefore')}
+								<TextLink
+									href="https://github.com/luisfer/cursor-ambassador-evergreen"
+									external
+									caret={false}
+									className="align-baseline text-xs font-medium"
+								>
+									{t('footer.templateCreditName')}
+								</TextLink>
+								{t('footer.templateCreditMid')}
+								<TextLink href="https://lfrc.me" external caret={false} className="align-baseline text-xs font-medium">
+									{t('footer.templateCreditAuthor')}
+								</TextLink>
+							</p>
 						</div>
 
 						<Button href={joinUrl} external variant="primary" size="md">

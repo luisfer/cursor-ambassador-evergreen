@@ -8,8 +8,7 @@ import './globals.css';
 const siteUrl = (process.env.NEXT_PUBLIC_SITE_URL || 'http://localhost:3000').replace(/\/$/, '');
 const title = siteConfig.communityName;
 const description =
-	siteConfig.description ||
-	`Cursor meetups and workshops in ${siteConfig.city}, ${siteConfig.country}.`;
+	siteConfig.description || `Cursor meetups and workshops in ${siteConfig.city}, ${siteConfig.country}.`;
 const ogImage = siteConfig.ogImage || '/og.jpg';
 
 export const metadata: Metadata = {

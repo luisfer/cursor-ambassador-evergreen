@@ -7,6 +7,8 @@ import UpcomingEvents from '@/components/UpcomingEvents';
 import PastEvents from '@/components/PastEvents';
 import GlobalEvents from '@/components/GlobalEvents';
 import SectionDivider from '@/components/SectionDivider';
+import CommunityQuotes from '@/components/CommunityQuotes';
+import ClosingCTA from '@/components/ClosingCTA';
 import Footer from '@/components/Footer';
 import JsonLd from '@/components/JsonLd';
 import MatchmakingSection from '@/components/MatchmakingSection';
@@ -120,6 +122,16 @@ const Home: React.FC = () => (
 					</GridSection>
 				</>
 			) : null}
+			{siteConfig.sections.communityQuotes ? (
+				<>
+					<GridSection>
+						<SectionDivider />
+					</GridSection>
+					<GridSection>
+						<CommunityQuotes />
+					</GridSection>
+				</>
+			) : null}
 			<GridSection>
 				<SectionDivider />
 			</GridSection>
@@ -127,6 +139,7 @@ const Home: React.FC = () => (
 				<GlobalEvents />
 			</GridSection>
 		</div>
+		<ClosingCTA />
 		<Footer />
 	</main>
 );

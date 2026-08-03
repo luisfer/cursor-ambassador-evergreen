@@ -31,6 +31,9 @@ Thanks for helping improve the Cursor Ambassador Site Template.
 - Use TypeScript for all code changes.
 - Keep styling in Tailwind utility classes and existing design tokens.
 - Avoid hardcoding city/community-specific values in `components/`.
+- Keep the required template footer credit in `components/Footer.tsx` (see `NOTICE` / `ATTRIBUTION.md`).
+- Do not re-add third-party event photography without credit and permission.
+- Do not change the LICENSE copyright holder without discussion.
 
 ## Verification
 
