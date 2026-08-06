@@ -8,8 +8,9 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
 
 ### Added
 
+- Footer **System / Light / Dark** theme toggle (`lib/theme.tsx`, `ThemeToggle`, FOUC boot script) — default preference `system`
 - Shared 1300px / 24-column marketing grid with wide, reading, and prose spans
-- Automatic warm-light and espresso-dark themes using semantic CSS tokens
+- Warm-light and espresso-dark themes via semantic CSS tokens (`data-theme` + system fallback)
 - Opaque rounded hero copy panel over the top-left 2×2 bento slot (heading + events CTA)
 - Optional host venue logo chip on past-event / recap index cards (`event.host`)
 - Date-grouped upcoming event index
@@ -17,12 +18,16 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
 - `NOTICE`, `ATTRIBUTION.md`, and `AGENTS.md` for deployment credit and media rules
 - Closing CTA (“Come build with us”) with Turner _Norham Castle, Sunrise_ (Wikimedia / public domain)
 - Optional community quotes section (`sections.communityQuotes`, `content/community-quotes.ts`)
+- Chapter craft rules in `docs/ui-kit.md` (featured band, accent voltage, closing radius, community proof)
 
 ### Changed
 
+- Featured resource is a typographic hairline band (not a heavy card)
+- Closing CTA uses tight `rounded-sm` (not soft `rounded-2xl`)
+- Tweet embeds follow resolved theme preference, not OS-only `matchMedia`
 - Navigation and footer use compact global chrome aligned to the marketing grid
 - Hosting partners use a bordered logo grid with grayscale-to-color interaction
-- Community tweets mosaic uses CSS-column masonry (Pinterest-style packing)
+- Community tweets mosaic uses CSS-column masonry (Pinterest-style packing); section remains optional / default off
 - Photography renders without colored tile washes or routine entrance animation
 - Typography, surfaces, buttons, links, recaps, and optional sections use shared semantic tokens
 - External text links use `↗`; internal links use `→`
@@ -35,6 +40,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
 ### Notes for consumers
 
 - **Attribution:** keep the footer template credit (or an equivalent visible line). See `ATTRIBUTION.md`.
+- **Theme:** footer toggle persists in `localStorage` key `cursor-theme`. Prefer curated quotes over tweet masonry for community proof; keep `sections.communityTweets` off until you have real embeds.
 - **Photos:** replace `public/images/events/placeholder-*.jpg` with your chapter photos. Do not reuse Athita / Thailand event photos without credit and permission.
 - **Hero:** the gradient overlay + eyebrow / description / Luma Join CTA are gone. Copy lives in an opaque panel. Keep Join in the nav (default) or re-add a CTA in `components/HeroHeader.tsx`.
 - **Bento contract:** the panel assumes the first slot in `content/bento-slots.ts` stays top-left `2×2` on desktop and mobile. If you change that geometry, update the panel grid in `HeroHeader.tsx` to match.

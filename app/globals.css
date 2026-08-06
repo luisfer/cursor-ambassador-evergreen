@@ -44,7 +44,8 @@
 	font-display: swap;
 }
 
-:root {
+:root,
+[data-theme='light'] {
 	color-scheme: light;
 	--cursor-bg: #f7f7f4;
 	--cursor-bg-dark: #ebeae5;
@@ -75,8 +76,40 @@
 	--cursor-accent-orange-bg: rgba(245, 78, 0, 0.08);
 }
 
+[data-theme='dark'] {
+	color-scheme: dark;
+	--cursor-bg: #14120b;
+	--cursor-bg-dark: #0f0d06;
+	--cursor-surface: #1c1a12;
+	--cursor-surface-raised: #262318;
+	--cursor-text: #edecec;
+	--cursor-text-secondary: rgba(237, 236, 236, 0.75);
+	--cursor-text-muted: rgba(237, 236, 236, 0.55);
+	--cursor-text-faint: rgba(237, 236, 236, 0.35);
+	--cursor-border: rgba(237, 236, 236, 0.08);
+	--cursor-border-emphasis: rgba(237, 236, 236, 0.15);
+	--cursor-overlay: rgba(237, 236, 236, 0.05);
+	--cursor-action: #edecec;
+	--cursor-action-hover: rgba(237, 236, 236, 0.78);
+	--cursor-action-text: #14120b;
+	--cursor-accent-blue: #a8b4c8;
+	--cursor-accent-green: #a8c4a0;
+	--cursor-accent-red: #c4a0a0;
+	--cursor-accent-purple: #b8a8c8;
+	--cursor-accent-yellow: #c8bfa0;
+	--cursor-accent-orange: #f54e00;
+	--cursor-accent-orange-hover: #ff6a24;
+	--cursor-accent-blue-bg: rgba(26, 29, 46, 0.3);
+	--cursor-accent-green-bg: rgba(26, 36, 24, 0.3);
+	--cursor-accent-red-bg: rgba(42, 26, 24, 0.3);
+	--cursor-accent-purple-bg: rgba(34, 26, 46, 0.3);
+	--cursor-accent-yellow-bg: rgba(42, 36, 24, 0.3);
+	--cursor-accent-orange-bg: rgba(42, 32, 24, 0.3);
+}
+
+/* System preference when FOUC script has not set data-theme */
 @media (prefers-color-scheme: dark) {
-	:root {
+	:root:not([data-theme='light']):not([data-theme='dark']) {
 		color-scheme: dark;
 		--cursor-bg: #14120b;
 		--cursor-bg-dark: #0f0d06;
@@ -239,8 +272,13 @@
 		--cursor-action-text: #14120b;
 	}
 
+	[data-theme='dark'] .cursor-wordmark {
+		filter: none;
+		opacity: 1;
+	}
+
 	@media (prefers-color-scheme: dark) {
-		.cursor-wordmark {
+		:root:not([data-theme='light']):not([data-theme='dark']) .cursor-wordmark {
 			filter: none;
 			opacity: 1;
 		}

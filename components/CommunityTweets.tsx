@@ -1,10 +1,11 @@
 'use client';
 
-import { useEffect, useState } from 'react';
+import { useState } from 'react';
 import { ExternalLink } from 'lucide-react';
 import { Tweet, TweetSkeleton, type TwitterComponents } from 'react-tweet';
 import 'react-tweet/theme.css';
 import { useI18n } from '@/lib/i18n';
+import { useTheme } from '@/lib/theme';
 import { Button } from '@/components/ui';
 import {
 	COMMUNITY_TWEET_EMBEDS,
@@ -54,17 +55,10 @@ function TweetCard({ id, url, note, dark }: { id: string; url: string; note?: st
 
 export default function CommunityTweets() {
 	const { t } = useI18n();
+	const { resolved } = useTheme();
 	const mosaicPool = COMMUNITY_TWEET_EMBEDS.slice(0, COMMUNITY_TWEET_MOSAIC_MAX);
 	const [visibleCount, setVisibleCount] = useState(Math.min(COMMUNITY_TWEET_PAGE_SIZE, mosaicPool.length));
-	const [dark, setDark] = useState(false);
-
-	useEffect(() => {
-		const media = window.matchMedia('(prefers-color-scheme: dark)');
-		const update = () => setDark(media.matches);
-		update();
-		media.addEventListener('change', update);
-		return () => media.removeEventListener('change', update);
-	}, []);
+	const dark = resolved === 'dark';
 
 	if (!hasCommunityTweetContent()) return null;
 

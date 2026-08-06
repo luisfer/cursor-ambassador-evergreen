@@ -6,6 +6,7 @@ import { useI18n } from '@/lib/i18n';
 import { siteConfig } from '@/content/site.config';
 import { upcomingEvents } from '@/content/events';
 import Partners from '@/components/Partners';
+import ThemeToggle from '@/components/ThemeToggle';
 import { Button, TextLink } from '@/components/ui';
 import { MarketingColumn, MarketingGrid } from '@/components/layout/MarketingGrid';
 
@@ -68,6 +69,9 @@ const Footer: React.FC = () => {
 									{t('footer.templateCreditAuthor')}
 								</TextLink>
 							</p>
+							<div className="mt-4">
+								<ThemeToggle />
+							</div>
 						</div>
 
 						<Button href={joinUrl} external variant="primary" size="md">

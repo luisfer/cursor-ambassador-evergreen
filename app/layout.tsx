@@ -3,6 +3,7 @@ import { headers } from 'next/headers';
 import { Analytics } from '@vercel/analytics/react';
 import Providers from '@/components/Providers';
 import { siteConfig } from '@/content/site.config';
+import { THEME_BOOT_SCRIPT } from '@/lib/theme-boot';
 import './globals.css';
 
 const siteUrl = (process.env.NEXT_PUBLIC_SITE_URL || 'http://localhost:3000').replace(/\/$/, '');
@@ -50,7 +51,13 @@ export default async function RootLayout({ children }: { children: React.ReactNo
 	const nonce = headersList.get('x-nonce') ?? '';
 
 	return (
-		<html lang={siteConfig.defaultLocale}>
+		<html lang={siteConfig.defaultLocale} suppressHydrationWarning>
+			<head>
+				<script
+					nonce={nonce || undefined}
+					dangerouslySetInnerHTML={{ __html: THEME_BOOT_SCRIPT }}
+				/>
+			</head>
 			<body className="antialiased">
 				<Providers>{children}</Providers>
 				<Analytics {...({ nonce } as React.ComponentProps<typeof Analytics>)} />

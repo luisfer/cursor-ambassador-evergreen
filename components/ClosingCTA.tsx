@@ -20,7 +20,7 @@ const ClosingCTA: React.FC = () => {
 		<section className="bg-cursor-bg py-10 md:py-14 lg:py-16">
 			<MarketingGrid>
 				<MarketingColumn width="full">
-					<div className="cursor-on-image overflow-hidden rounded-xl border border-cursor-border bg-[rgb(20_18_11)] text-[rgb(237_236_236)] md:rounded-2xl">
+					<div className="cursor-on-image overflow-hidden rounded-sm border border-cursor-border bg-[rgb(20_18_11)] text-[rgb(237_236_236)]">
 						<div className="grid md:grid-cols-2 md:items-stretch">
 							<div className="flex flex-col justify-center px-6 py-12 sm:px-8 md:px-10 md:py-20 lg:px-14 lg:py-24">
 								<h2 className="cursor-display max-w-[14ch]">{t('home.closingHeading')}</h2>

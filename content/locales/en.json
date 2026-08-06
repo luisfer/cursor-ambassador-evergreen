@@ -49,7 +49,11 @@
 		"templateCreditMid": " by ",
 		"templateCreditAuthor": "Luis Romero",
 		"joinNext": "Join the next event",
-		"followUs": "Follow Cursor on X"
+		"followUs": "Follow Cursor on X",
+		"themeLabel": "Color theme",
+		"themeSystem": "System",
+		"themeLight": "Light",
+		"themeDark": "Dark"
 	},
 	"featured": {
 		"defaultDescription": "Slides, guides, and materials shared by your local Cursor community."
