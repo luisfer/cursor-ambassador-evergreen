@@ -17,6 +17,26 @@ interface LumaGetItemsResponse {
 const LUMA_GET_ITEMS_URL = 'https://api.lu.ma/calendar/get-items';
 const FETCH_TIMEOUT_MS = 6_000;
 const REVALIDATE_SECONDS = 3_600;
+const USER_AGENT = 'CursorBrasil/1.0 (+https://www.cursorbrasil.com.br)';
+const MAX_ATTEMPTS = 3;
+const RETRY_BASE_MS = 500;
+
+let queueTail: Promise<void> = Promise.resolve();
+
+function enqueue<T>(task: () => Promise<T>): Promise<T> {
+	const result = queueTail.then(task, task);
+	queueTail = result.then(
+		() => undefined,
+		() => undefined,
+	);
+	return result;
+}
+
+function wait(ms: number): Promise<void> {
+	return new Promise((resolve) => {
+		setTimeout(resolve, ms);
+	});
+}
 
 function isNonEmptyString(value: unknown): value is string {
 	return typeof value === 'string' && value.length > 0;
@@ -30,36 +50,54 @@ function isLumaResponse(value: unknown): value is LumaGetItemsResponse {
 
 export type LumaEventPeriod = 'future' | 'past';
 
+async function requestCalendarEvents(
+	calendarApiId: string,
+	period: LumaEventPeriod,
+	paginationLimit: number,
+): Promise<LumaApiEvent[]> {
+	const url = `${LUMA_GET_ITEMS_URL}?calendar_api_id=${encodeURIComponent(calendarApiId)}&period=${period}&pagination_limit=${paginationLimit}`;
+
+	for (let attempt = 1; attempt <= MAX_ATTEMPTS; attempt++) {
+		const response = await fetch(url, {
+			headers: { accept: 'application/json', 'user-agent': USER_AGENT },
+			signal: AbortSignal.timeout(FETCH_TIMEOUT_MS),
+			next: { revalidate: REVALIDATE_SECONDS, tags: [`luma:${calendarApiId}:${period}`] },
+		});
+		if (response.ok) {
+			const json: unknown = await response.json();
+			if (!isLumaResponse(json)) {
+				throw new Error(`Luma ${calendarApiId} returned an unexpected shape`);
+			}
+
+			return (json.entries ?? [])
+				.map((entry) => entry?.event)
+				.filter(
+					(event): event is LumaApiEvent =>
+						Boolean(event) &&
+						isNonEmptyString(event?.name) &&
+						isNonEmptyString(event?.start_at) &&
+						isNonEmptyString(event?.url),
+				);
+		}
+
+		if (response.status !== 429) {
+			throw new Error(`Luma ${calendarApiId} responded with HTTP ${response.status}`);
+		}
+
+		if (attempt < MAX_ATTEMPTS) {
+			await wait(RETRY_BASE_MS * attempt);
+		}
+	}
+
+	throw new Error(`Luma ${calendarApiId} responded with HTTP 429`);
+}
+
 export async function fetchCalendarEvents(
 	calendarApiId: string,
 	period: LumaEventPeriod,
 	paginationLimit = 20,
 ): Promise<LumaApiEvent[]> {
-	const url = `${LUMA_GET_ITEMS_URL}?calendar_api_id=${encodeURIComponent(calendarApiId)}&period=${period}&pagination_limit=${paginationLimit}`;
-
-	const response = await fetch(url, {
-		headers: { accept: 'application/json' },
-		signal: AbortSignal.timeout(FETCH_TIMEOUT_MS),
-		next: { revalidate: REVALIDATE_SECONDS, tags: [`luma:${calendarApiId}:${period}`] },
-	});
-	if (!response.ok) {
-		throw new Error(`Luma ${calendarApiId} responded with HTTP ${response.status}`);
-	}
-
-	const json: unknown = await response.json();
-	if (!isLumaResponse(json)) {
-		throw new Error(`Luma ${calendarApiId} returned an unexpected shape`);
-	}
-
-	return (json.entries ?? [])
-		.map((entry) => entry?.event)
-		.filter(
-			(event): event is LumaApiEvent =>
-				Boolean(event) &&
-				isNonEmptyString(event?.name) &&
-				isNonEmptyString(event?.start_at) &&
-				isNonEmptyString(event?.url),
-		);
+	return enqueue(() => requestCalendarEvents(calendarApiId, period, paginationLimit));
 }
 
 // start_at chega em UTC; a data exibida e agrupada segue o fuso do publico.
