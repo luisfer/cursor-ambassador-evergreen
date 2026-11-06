@@ -59,6 +59,16 @@ export const ambassadors: Ambassador[] = [
 		},
 	},
 	{
+		name: 'João Benedet',
+		role: 'Embaixador Cursor · Criciúma',
+		photo: '/images/ambassadors/joao-benedet.jpg',
+		links: {
+			linkedin: 'https://linkedin.com/in/joaobenedet',
+			github: 'https://github.com/joaobenedetmachado',
+			website: 'https://joaobenedet.com',
+		},
+	},
+	{
 		name: 'Marcelo Barella',
 		role: 'Embaixador Cursor · Passo Fundo, Porto Alegre e Serra Gaúcha',
 		photo: '/images/ambassadors/marcelo-barella.jpg',
